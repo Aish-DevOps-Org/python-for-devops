@@ -16,7 +16,14 @@ def get_joke(url, mood):
 
 
 def main():
-    mood = input("Which joke? (dad / pj): ").strip().lower()
+    while True:
+        try:
+            mood = input("Which joke? (dad / pj): ").strip().lower()    #strip() removes whitespace from the beginning and end of the string, lower() converts to lowercase
+            if mood not in ["dad", "pj"]:
+                raise ValueError("Invalid input. Please enter 'dad' or 'pj'.")
+            break
+        except ValueError as e:
+            print(f"Error: {e}")
     url = PJ_URL if mood == "pj" else DAD_JOKE_URL
     mood = "pj" if mood == "pj" else "dad"
     print("\n" + get_joke(url, mood))
