@@ -51,6 +51,8 @@ def main():
     for level, count in result.items():
         print(f"  {level:7}: {count}")
 
+    analyzer.write_summary()
+
 
 if __name__ == "__main__":
     main()
